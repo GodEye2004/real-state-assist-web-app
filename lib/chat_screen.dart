@@ -44,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 
     try {
       final response = await http.post(
-        Uri.parse("https://real-estate-assist-4.onrender.com/ask"),
+        Uri.parse("https://real-estate-assist-5.onrender.com/ask"),
         headers: {"Content-Type": "application/json"},
         body: jsonEncode({"question": message}),
       );
