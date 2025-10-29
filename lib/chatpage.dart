@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'dart:convert';
@@ -28,9 +29,8 @@ class _ChatPageState extends State<ChatPage> {
     initializeChat();
     loadMessages();
 
-    // اضافه کردن لیستنر برای آپدیت حالت دکمه
     _messageController.addListener(() {
-      setState(() {}); // این باعث می‌شه build مجدد صدا بشه و دکمه آپدیت بشه
+      setState(() {});
     });
   }
 
@@ -43,7 +43,6 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
-  // بارگذاری پیام‌های قبلی
   Future<void> loadMessages() async {
     final prefs = await SharedPreferences.getInstance();
     final savedMessages = prefs.getString('chat_messages_$userId');
@@ -154,7 +153,7 @@ class _ChatPageState extends State<ChatPage> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('بازنشانی برنامه'),
+        title: const Text('خروح از برنامه'),
         content: const Text(
           'تمام اطلاعات شما پاک می‌شود و به صفحه اول برمی‌گردید.',
         ),
@@ -167,7 +166,7 @@ class _ChatPageState extends State<ChatPage> {
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('بازنشانی'),
+            child: const Text('خروج'),
           ),
         ],
       ),
@@ -208,9 +207,9 @@ class _ChatPageState extends State<ChatPage> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'دستیار هوشمند',
-                  style: TextStyle(
+                  style: GoogleFonts.vazirmatn(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
@@ -219,7 +218,7 @@ class _ChatPageState extends State<ChatPage> {
                 if (selectedCategory != null)
                   Text(
                     getCategoryName(selectedCategory!),
-                    style: TextStyle(fontSize: 12, color: Colors.grey.shade600),
+                    style: GoogleFonts.vazirmatn(fontSize: 12, color: Colors.grey.shade600),
                   ),
               ],
             ),
@@ -250,7 +249,7 @@ class _ChatPageState extends State<ChatPage> {
                       size: 20,
                     ),
                     SizedBox(width: 12),
-                    Text('بازنشانی برنامه'),
+                    Text('خروج'),
                   ],
                 ),
               ),
@@ -309,16 +308,20 @@ class _ChatPageState extends State<ChatPage> {
           const SizedBox(height: 24),
           Text(
             'چطور می‌تونم کمکتون کنم؟',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey.shade800,
+            style: GoogleFonts.vazirmatn(
+              // ← Choose your favorite font here
+              color: Colors.grey.shade700,
+              fontSize: 16,
             ),
           ),
           const SizedBox(height: 12),
           Text(
             'سوال خود را بپرسید',
-            style: TextStyle(fontSize: 16, color: Colors.grey.shade600),
+            style: GoogleFonts.vazirmatn(
+              // ← Choose your favorite font here
+              color: Colors.grey.shade700,
+              fontSize: 16,
+            ),
           ),
           const SizedBox(height: 40),
 
@@ -363,7 +366,11 @@ class _ChatPageState extends State<ChatPage> {
         ),
         child: Text(
           text,
-          style: TextStyle(color: Colors.grey.shade700, fontSize: 14),
+          style: GoogleFonts.vazirmatn(
+            // ← Choose your favorite font here
+            color: Colors.grey.shade700,
+            fontSize: 14,
+          ),
         ),
       ),
     );
@@ -452,7 +459,7 @@ class _ChatPageState extends State<ChatPage> {
                         controller: _messageController,
                         focusNode: _focusNode,
                         decoration: const InputDecoration(
-                          hintText: 'پیام خود را بنویسید...',
+                          hintText: '',
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.symmetric(
                             horizontal: 20,
@@ -603,7 +610,7 @@ class MessageBubble extends StatelessWidget {
                   ),
                   child: SelectableText(
                     message.text,
-                    style: TextStyle(
+                    style: GoogleFonts.vazirmatn(
                       color: message.isUser
                           ? Colors.white
                           : (message.isError
@@ -618,7 +625,7 @@ class MessageBubble extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 4, left: 8, right: 8),
                   child: Text(
                     '${message.timestamp.hour}:${message.timestamp.minute.toString().padLeft(2, '0')}',
-                    style: TextStyle(color: Colors.grey.shade500, fontSize: 11),
+                    style: GoogleFonts.vazirmatn(color: Colors.grey.shade500, fontSize: 11),
                   ),
                 ),
               ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 import 'file_upload_page.dart';
@@ -88,9 +89,9 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
               const SizedBox(height: 20),
 
               // عنوان
-              const Text(
+               Text(
                 'دسته‌بندی خود را انتخاب کنید',
-                style: TextStyle(
+                style: GoogleFonts.vazirmatn(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                   color: Colors.green,
@@ -100,9 +101,9 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
 
               const SizedBox(height: 10),
 
-              const Text(
+              Text(
                 'لطفاً نوع اسناد خود را مشخص کنید',
-                style: TextStyle(
+                style: GoogleFonts.vazirmatn(
                   fontSize: 16,
                   color: Colors.grey,
                 ),
@@ -154,9 +155,9 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
                             color: Colors.white,
                           ),
                         )
-                      : const Text(
+                      : Text(
                           'ادامه',
-                          style: TextStyle(fontSize: 18),
+                          style: GoogleFonts.vazirmatn(fontSize: 18),
                         ),
                 ),
               ),
@@ -229,7 +230,7 @@ class CategoryCard extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
+                    style: GoogleFonts.vazirmatn(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                       color: isSelected ? Colors.green : Colors.black87,
@@ -238,7 +239,7 @@ class CategoryCard extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     description,
-                    style: TextStyle(
+                    style: GoogleFonts.vazirmatn(
                       fontSize: 14,
                       color: Colors.grey.shade600,
                     ),

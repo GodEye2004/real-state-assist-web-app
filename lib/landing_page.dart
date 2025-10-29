@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'category_selection_page.dart';
 
 class LandingPage extends StatelessWidget {
@@ -13,10 +14,7 @@ class LandingPage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Colors.green.shade400,
-              Colors.green.shade700,
-            ],
+            colors: [Colors.green.shade400, Colors.green.shade700],
           ),
         ),
         child: SafeArea(
@@ -24,7 +22,7 @@ class LandingPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              
+
               // آیکون اصلی
               Container(
                 padding: const EdgeInsets.all(30),
@@ -49,9 +47,9 @@ class LandingPage extends StatelessWidget {
               const SizedBox(height: 40),
 
               // عنوان
-              const Text(
-                'به دستیار هوشمند خوش آمدید',
-                style: TextStyle(
+              Text(
+                'به چت میت خوش آمدید',
+                style: GoogleFonts.vazirmatn(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -65,8 +63,8 @@ class LandingPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Text(
-                  'با استفاده از هوش مصنوعی، پاسخ سوالات خود را از اسناد و فایل‌های خود دریافت کنید',
-                  style: TextStyle(
+                  'با ترکیب دانش تخصصی کسب‌ و کارت و قدرت هوش مصنوعی، هوشمندتر از همیشه عمل کن',
+                  style: GoogleFonts.vazirmatn(
                     fontSize: 16,
                     color: Colors.white.withOpacity(0.9),
                     height: 1.5,
@@ -100,9 +98,9 @@ class LandingPage extends StatelessWidget {
                       ),
                       elevation: 5,
                     ),
-                    child: const Text(
+                    child: Text(
                       'شروع کنید',
-                      style: TextStyle(
+                      style: GoogleFonts.vazirmatn(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),

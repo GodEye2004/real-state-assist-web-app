@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/chatpage.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'landing_page.dart';
 
@@ -82,15 +83,11 @@ class _InitialPageState extends State<InitialPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.chat_bubble_outline,
-              size: 80,
-              color: Colors.white,
-            ),
+            Icon(Icons.chat_bubble_outline, size: 80, color: Colors.white),
             const SizedBox(height: 20),
-            const Text(
-              'دستیار هوشمند',
-              style: TextStyle(
+            Text(
+              'چت میت',
+              style: GoogleFonts.vazirmatn(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,

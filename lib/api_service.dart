@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 class ApiService {
-  final String baseUrl = "http://192.168.100.244:8000";
+  final String baseUrl = "http://10.128.249.214:8000";
   late String userId;
   bool _initialized = false;
 
