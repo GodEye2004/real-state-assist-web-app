@@ -1,5 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:typed_data';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_application_1/chatpage.dart';
@@ -24,24 +25,27 @@ class FileUploadPage extends StatefulWidget {
 }
 
 class _FileUploadPageState extends State<FileUploadPage> {
-  File? selectedFile;
+  Uint8List? fileBytes;
+  String? fileName;
   bool isUploading = false;
 
   Future<void> pickFile() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
       allowedExtensions: ['json', 'pdf', 'docx', 'txt'],
+      withData: true, // مهم برای وب
     );
 
-    if (result != null && result.files.single.path != null) {
+    if (result != null && result.files.single.bytes != null) {
       setState(() {
-        selectedFile = File(result.files.single.path!);
+        fileBytes = result.files.single.bytes!;
+        fileName = result.files.single.name;
       });
     }
   }
 
   Future<void> uploadFile() async {
-    if (selectedFile == null) {
+    if (fileBytes == null || fileName == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('لطفاً ابتدا یک فایل انتخاب کنید')),
       );
@@ -58,8 +62,9 @@ class _FileUploadPageState extends State<FileUploadPage> {
 
       request.fields['user_id'] = widget.userId;
       request.fields['category'] = widget.category;
+
       request.files.add(
-        await http.MultipartFile.fromPath('file', selectedFile!.path),
+        http.MultipartFile.fromBytes('file', fileBytes!, filename: fileName!),
       );
 
       final response = await request.send();
@@ -129,7 +134,6 @@ class _FileUploadPageState extends State<FileUploadPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const SizedBox(height: 20),
-
               Center(
                 child: Container(
                   padding: const EdgeInsets.all(24),
@@ -144,9 +148,7 @@ class _FileUploadPageState extends State<FileUploadPage> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 30),
-
               const Text(
                 'آپلود فایل',
                 style: TextStyle(
@@ -156,19 +158,16 @@ class _FileUploadPageState extends State<FileUploadPage> {
                 ),
                 textAlign: TextAlign.center,
               ),
-
               const SizedBox(height: 10),
-
               const Text(
                 'فایل خود را برای شروع چت آپلود کنید',
                 style: TextStyle(fontSize: 16, color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
-
               const SizedBox(height: 40),
 
               // selected card
-              if (selectedFile != null)
+              if (fileBytes != null)
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -197,7 +196,7 @@ class _FileUploadPageState extends State<FileUploadPage> {
                             ),
                             const SizedBox(height: 4),
                             Text(
-                              selectedFile!.path.split('/').last,
+                              fileName!,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
@@ -211,7 +210,10 @@ class _FileUploadPageState extends State<FileUploadPage> {
                       IconButton(
                         icon: const Icon(Icons.close),
                         onPressed: () {
-                          setState(() => selectedFile = null);
+                          setState(() {
+                            fileBytes = null;
+                            fileName = null;
+                          });
                         },
                       ),
                     ],
@@ -219,13 +221,10 @@ class _FileUploadPageState extends State<FileUploadPage> {
                 ),
 
               const SizedBox(height: 20),
-
               OutlinedButton.icon(
                 onPressed: pickFile,
                 icon: const Icon(Icons.attach_file),
-                label: Text(
-                  selectedFile == null ? 'انتخاب فایل' : 'تغییر فایل',
-                ),
+                label: Text(fileBytes == null ? 'انتخاب فایل' : 'تغییر فایل'),
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.green,
                   side: const BorderSide(color: Colors.green),
@@ -235,9 +234,7 @@ class _FileUploadPageState extends State<FileUploadPage> {
                   ),
                 ),
               ),
-
               const SizedBox(height: 12),
-
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -264,9 +261,7 @@ class _FileUploadPageState extends State<FileUploadPage> {
                   ],
                 ),
               ),
-
               const Spacer(),
-
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -289,7 +284,6 @@ class _FileUploadPageState extends State<FileUploadPage> {
                         ),
                 ),
               ),
-
               const SizedBox(height: 20),
             ],
           ),
