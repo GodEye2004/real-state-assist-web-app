@@ -59,7 +59,7 @@ class LandingPage extends StatelessWidget {
 
               const SizedBox(height: 16),
 
-              // توضیحات
+             
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Text(
@@ -75,7 +75,7 @@ class LandingPage extends StatelessWidget {
 
               const Spacer(),
 
-              // دکمه شروع
+              
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: SizedBox(

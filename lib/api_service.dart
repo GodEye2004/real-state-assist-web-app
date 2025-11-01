@@ -4,13 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 class ApiService {
-  final String baseUrl = "http://10.128.249.214:8000";
+  final String baseUrl = "https://real-estate-assist-test.onrender.com";
   late String userId;
   bool _initialized = false;
 
   ApiService({required String userId});
 
-  // --------- مقداردهی userId داینامیک ----------
   Future<void> init() async {
     if (_initialized) return;
     final prefs = await SharedPreferences.getInstance();
@@ -19,7 +18,6 @@ class ApiService {
     _initialized = true;
   }
 
-  // --------- انتخاب کتگوری ----------
   Future<String> selectCategory(String category) async {
     await init();
     final response = await http.post(
@@ -35,7 +33,6 @@ class ApiService {
     }
   }
 
-  // --------- آپلود دیتا ----------
   Future<String> uploadData(Map<String, dynamic> jsonData) async {
     await init();
     final response = await http.post(
@@ -51,7 +48,6 @@ class ApiService {
     }
   }
 
-  // --------- پرسش سؤال ----------
   Future<String> askQuestion(String question) async {
     await init();
     final response = await http.post(

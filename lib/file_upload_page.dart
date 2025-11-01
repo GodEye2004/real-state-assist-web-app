@@ -88,9 +88,9 @@ class _FileUploadPageState extends State<FileUploadPage> {
       }
     } catch (e) {
       if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('خطا: $e')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('خطا: $e')));
     } finally {
       setState(() => isUploading = false);
     }
@@ -118,10 +118,7 @@ class _FileUploadPageState extends State<FileUploadPage> {
         actions: [
           TextButton(
             onPressed: skipUpload,
-            child: const Text(
-              'رد شدن',
-              style: TextStyle(color: Colors.white),
-            ),
+            child: const Text('رد شدن', style: TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -133,7 +130,6 @@ class _FileUploadPageState extends State<FileUploadPage> {
             children: [
               const SizedBox(height: 20),
 
-              // آیکون
               Center(
                 child: Container(
                   padding: const EdgeInsets.all(24),
@@ -151,7 +147,6 @@ class _FileUploadPageState extends State<FileUploadPage> {
 
               const SizedBox(height: 30),
 
-              // عنوان
               const Text(
                 'آپلود فایل',
                 style: TextStyle(
@@ -166,16 +161,13 @@ class _FileUploadPageState extends State<FileUploadPage> {
 
               const Text(
                 'فایل خود را برای شروع چت آپلود کنید',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.grey,
-                ),
+                style: TextStyle(fontSize: 16, color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
 
               const SizedBox(height: 40),
 
-              // کارت فایل انتخاب شده
+              // selected card
               if (selectedFile != null)
                 Container(
                   padding: const EdgeInsets.all(16),
@@ -228,7 +220,6 @@ class _FileUploadPageState extends State<FileUploadPage> {
 
               const SizedBox(height: 20),
 
-              // دکمه انتخاب فایل
               OutlinedButton.icon(
                 onPressed: pickFile,
                 icon: const Icon(Icons.attach_file),
@@ -247,7 +238,6 @@ class _FileUploadPageState extends State<FileUploadPage> {
 
               const SizedBox(height: 12),
 
-              // راهنما
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
@@ -277,7 +267,6 @@ class _FileUploadPageState extends State<FileUploadPage> {
 
               const Spacer(),
 
-              // دکمه آپلود
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

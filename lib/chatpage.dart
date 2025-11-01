@@ -260,8 +260,7 @@ class _ChatPageState extends State<ChatPage> {
       body: Column(
         children: [
           Divider(height: 1, color: Colors.grey.shade200),
-
-          // محتوای اصلی چت
+          //main chat area
           Expanded(
             child: messages.isEmpty
                 ? _buildEmptyState()
@@ -278,10 +277,8 @@ class _ChatPageState extends State<ChatPage> {
                   ),
           ),
 
-          // خط جداکننده
           Container(height: 1, color: Colors.grey.shade200),
 
-          // فیلد ورودی پیام
           _buildMessageInput(),
         ],
       ),
@@ -325,7 +322,6 @@ class _ChatPageState extends State<ChatPage> {
           ),
           const SizedBox(height: 40),
 
-          // نمونه سوالات
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Wrap(
@@ -518,7 +514,6 @@ class _ChatPageState extends State<ChatPage> {
   }
 }
 
-// مدل پیام
 class ChatMessage {
   final String text;
   final bool isUser;
@@ -547,7 +542,6 @@ class ChatMessage {
   );
 }
 
-// ویجت حباب پیام
 class MessageBubble extends StatelessWidget {
   final ChatMessage message;
 

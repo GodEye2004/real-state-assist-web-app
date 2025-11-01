@@ -112,7 +112,6 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
 
               const SizedBox(height: 40),
 
-              // کارت قرارداد
               CategoryCard(
                 title: 'قرارداد',
                 description: 'برای اسناد و قراردادهای حقوقی',
@@ -125,7 +124,6 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
 
               const SizedBox(height: 20),
 
-              // کارت فروشگاه لباس
               CategoryCard(
                 title: 'فروشگاه لباس',
                 description: 'برای کاتالوگ و اطلاعات محصولات',
@@ -138,7 +136,6 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
 
               const Spacer(),
 
-              // دکمه ادامه
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -171,7 +168,8 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
   }
 }
 
-// ویجت کارت دسته‌بندی
+
+// category card widget
 class CategoryCard extends StatelessWidget {
   final String title;
   final String description;
