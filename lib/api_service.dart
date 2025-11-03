@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
 
 class ApiService {
-  final String baseUrl = "https://real-estate-assist-test.onrender.com";
+  final String baseUrl = "http://10.233.137.214:8000";
   late String userId;
   bool _initialized = false;
 
